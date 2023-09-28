@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      {% block title %}<title>Design.pro</title>{% endblock %}
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css'%}">
+      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    </head>
+    <body>
+        <div class="container-fluid px-0">
+            <header class="header">
+                <section>
+                    <h4 class="mr-md-auto p-2 text-white"><a  href="{% url 'index'  %}">DESIGN.PRO</a></h4>
+                    <nav>
+                        <li><a  href="{% url 'index'  %}">ГЛАВНАЯ</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a class="" href="{%url 'profile'%}">ЛИЧНЫЙ КАБИНЕТ</a></li>
+                        <li><a class="" href="{%url 'logout'%}">ВЫХОД</a></li>
+                        {% else %}
+                        <li><a href="{%url 'register'%}">РЕГИСТРАЦИЯ</a></li>
+                        <li><a href="{%url 'login'%}">ВХОД</a>
+                            {% endif %}
+                    </nav>
+                </section>
+            </header>
+            <div class="bg-white">
+                <div class="container bg-white m-auto-0">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        <footer class="footer_part d-flex justify-content-center align-items-center ">
+                <p class="text-white-50">Выполнила: Чикулаева А.А.</p>
+        </footer>
+    </body>
+</html>

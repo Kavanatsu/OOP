@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+{% block content %}
+    <div class="bg-white wit d-flex justify-content-center align-items-center flex-column for-form">
+        <p class="zgl">Регистрация</p>
+        <form action="" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+            <table>
+            {{ form.as_table }}
+            </table>
+            <button type="submit" class="btn btn-primary">Регистрация</button>
+        </form>
+    </div>
+{% endblock %}
+

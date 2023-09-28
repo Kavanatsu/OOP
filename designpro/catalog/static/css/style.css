@@ -1,0 +1,143 @@
+html::-webkit-scrollbar {
+    display: none;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+   background-color: #1f2e23!important;
+}
+
+.header{
+     margin: 0 auto;
+     height: 60px;
+     width: 1200px;
+}
+
+.header>section{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.header>section>nav{
+    display: flex;
+    align-items: center;
+}
+
+.header>section>h4>a{
+    text-decoration: none;
+    color: white;
+}
+
+.header>section>nav>li>a{
+    margin-left: 45px;
+    font-size: 11pt;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: bold;
+}
+
+.header>section>nav>li:last-child>a{
+    border: 1px solid white;
+    padding: 6px 10px;
+    border-radius: 10px;
+}
+
+.header>section>nav>li>a:hover{
+    color: white;
+    transition: 0.4s ease-in-out;
+}
+
+.header>section>nav>li:last-child>a:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: 0.4s ease-in-out;
+}
+
+main{
+    background-color: white;
+}
+
+.zgl{
+    color: #1f2e23;
+    font-size: 24pt;
+    font-weight: normal;
+    line-height: normal;
+    padding: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+}
+
+.for-form>form{
+    padding: 40px;
+    background-color: #1f2e23;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.for-form>form>table>tbody>tr{
+    display: grid;
+}
+
+.for-form>form>input{
+    width: 100%;
+    margin-top: 25px;
+    background-color: white;
+    border: none;
+    border-radius:5px ;
+    color: #1f2e23;
+    font-weight: bold;
+    height: 35px;
+    transition: 0.4s ease-in-out;
+}
+
+.for-form>form>input:hover{
+    background-color: #919993;
+    color: white;
+    transition: 0.4s ease-in-out;
+}
+
+.for-form>form>button{
+    width: 100%;
+    margin-top: 25px;
+    background-color: white;
+    border: none;
+    border-radius:10px;
+    font-weight: bold;
+    color: #1f2e23;
+    transition: 0.4s ease-in-out;
+}
+
+.for-form>form>button:hover{
+    background-color: #919993;
+    color: white;
+    transition: 0.4s ease-in-out;
+}
+
+.for-form>form>table>tbody>tr>th>label{
+    color: white ;
+    margin-top: 10px;
+}
+
+.for-form>form>table>tbody>tr>td>label{
+    color: white ;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.wit{
+    padding: 40px;
+}
+
+.for-form>form>table>tbody>tr>td>input{
+    width: 100%;
+}
+
+footer>p{
+    padding: 30px;
+    margin: 0;
+}
