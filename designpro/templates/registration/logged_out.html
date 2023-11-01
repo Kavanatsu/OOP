@@ -1,5 +1,7 @@
 {% extends "base_generic.html" %}
 {% block content %}
-  <p>Выход</p>
-  <a href="{% url 'login'%}">Нажмите здесь, чтобы зайти снова</a>
+<div class="bg-white wit d-flex justify-content-center align-items-center flex-column">
+  <p class="zgl">Вы вышли из аккаунта</p>
+  <a class="logout_link" href="{% url 'login'%}">Нажмите здесь, чтобы зайти снова</a>
+</div>
 {% endblock %}

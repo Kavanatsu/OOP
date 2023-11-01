@@ -72,16 +72,41 @@ main{
     margin: 0;
 }
 
+.logout_link {
+    background-color: #1f2e23;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: 0.4s ease-in-out;
+    margin: 10px;
+}
+
+.logout_link:hover {
+    background-color: #63856c;
+    color: white;
+    transition: 0.4s ease-in-out;
+}
+
 .errorlist{
     padding: 0 10px;
     list-style-type: none;
-    background-color: #c73232;
-    color: white;
+    background-color: #f8d7da;
+    color: #842029;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin-bottom: 0;
     text-align: center;
     text-decoration: none;
+}
+
+.alert-danger {
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.alert-danger>p{
+    margin: 0;
 }
 
 .errorlist>li {

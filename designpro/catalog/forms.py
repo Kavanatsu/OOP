@@ -1,7 +1,7 @@
 from django.core.validators import RegexValidator
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import User
+from .models import User, Application
 
 
 class RegisterUserForm(forms.ModelForm):
@@ -62,4 +62,3 @@ class RegisterUserForm(forms.ModelForm):
         if commit:
             user.save()
         return user
-

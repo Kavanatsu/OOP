@@ -3,3 +3,5 @@ from catalog.models import *
 
 
 admin.site.register(User)
+admin.site.register(Categorise)
+admin.site.register(Application)

@@ -1,19 +1,72 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from .forms import RegisterUserForm
 
-
-def ApplicationAllListView(request):
-    return render(request, 'index.html')
-
-
-def ApplicationListView(request):
-    return render(request, 'profile.html')
+from django.contrib.auth.mixins import LoginRequiredMixin
+from catalog.models import Application
+from django.views import generic
+from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+import datetime
 
 
 class RegisterView(CreateView):
     template_name = 'registration/register.html'
     form_class = RegisterUserForm
     success_url = reverse_lazy('login')
+
+class ApplicationAllListView(generic.ListView):
+    model = Application
+    template_name = 'index.html'
+    paginate_by = 4
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ApplicationAllListView, self).get_context_data(*args, **kwargs)
+        context['count'] = Application.objects.filter(status='done').count()
+        return context
+
+    def get_queryset(self):
+        return Application.objects.filter(status='done').order_by('-date')
+
+
+class ApplicationListView(LoginRequiredMixin, generic.ListView):
+    model = Application
+    template_name = 'profile.html'
+    status = None
+
+    def get(self, request, *args, **kwargs):
+        if request.GET.get('status'):
+            self.status = request.GET.get('status')
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(ApplicationListView, self).get_context_data(**kwargs)
+        context['status_list'] = Application.objects.filter(Q(status='new') | Q(status='in work') | Q(status='done'))
+        return context
+
+    def get_queryset(self):
+        if self.status:
+            return Application.objects.filter(username=self.request.user, status=self.status)
+        return Application.objects.filter(username=self.request.user).order_by('-date')
+
+
+@login_required
+def delete_application(request, pk):
+    application = Application.objects.filter(username=request.user, pk=pk, status='new')
+    if application:
+        application.delete()
+    return redirect('profile')
+
+
+class CreateAppView(LoginRequiredMixin, CreateView):
+    model = Application
+    fields = ['name', 'description', 'categories', 'image']
+    template_name = 'createapp.html'
+    success_url = reverse_lazy('profile')
+
+    def form_valid(self, form):
+        form.instance.username = self.request.user
+        form.instance.date = datetime.date.today()
+        return super().form_valid(form)
 

@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
     'bootstrap4',
+    'django_cleanup',
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE = [
@@ -127,8 +129,16 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'catalog.User'
-
 LOGIN_REDIRECT_URL = '/catalog/accounts/profile/'
 
-LOGOUT_REDIRECT_URL = '/accounts/login/'
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
+MEDIA_URL = '/files/'
+THUMBNAIL_ALIASES = {
+    '': {
+        'default': {
+            'size': (96, 96),
+            'crop': 'scale',
+        },
+    },
+}
+THUMBNAIL_BASEDIR = 'files'
