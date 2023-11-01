@@ -17,7 +17,7 @@
                         <li><a  href="{% url 'index'  %}">ГЛАВНАЯ</a></li>
                         {% if user.is_authenticated %}
                         <li><a class="" href="{%url 'profile'%}">ЛИЧНЫЙ КАБИНЕТ</a></li>
-                        <li><a class="" href="{%url 'logout'%}">ВЫХОД</a></li>
+                        <li><a class="" href="#">ВЫХОД</a></li>
                         {% else %}
                         <li><a href="{%url 'register'%}">РЕГИСТРАЦИЯ</a></li>
                         <li><a href="{%url 'login'%}">ВХОД</a>
