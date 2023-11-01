@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+{% block content %}
+    <div class="bg-white ">
+        <p class="zgl">Создание заявки</p>
+        <div class="d-flex justify-content-center for-form">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <input type="submit" value="Создать"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}
