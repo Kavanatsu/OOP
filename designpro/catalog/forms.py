@@ -6,18 +6,20 @@ from .models import User
 
 class RegisterUserForm(forms.ModelForm):
     name = forms.CharField(label='Имя', validators=[RegexValidator('^[а-яА-Я- ]+$',
-                                                                   message='Разрешены только кириллица,тире и пробелы')],
+                                                                   message='Разрешены только кириллица, тире и пробелы')],
                            error_messages={
                                'required': "Обязательное поле",
                            })
     surname = forms.CharField(label='Фамилия', validators=[RegexValidator('^[а-яА-Я- ]+$',
-                                                                          message="Разрешены только кириллица,тире и пробелы")],
+                                                                          message="Разрешены только кириллица, тире и пробелы")],
                               error_messages={
                                   'required': "Обязательное поле",
                               })
     patronymic = forms.CharField(label='Отчество', validators=[RegexValidator('^[а-яА-Я- ]+$',
-                                                                              message="Разрешены только кириллица,тире и пробелы")])
-
+                                                                              message="Разрешены только кириллица, тире и пробелы")],
+                                 error_messages={
+                                     'required': "Обязательное поле",
+                                 })
     username = forms.CharField(label='Логин', validators=[RegexValidator('^[a-zA-Z-]+$',
                                                                          message='Разрешены только латиница и тире')],
                                error_messages={
@@ -26,7 +28,8 @@ class RegisterUserForm(forms.ModelForm):
                                })
     email = forms.EmailField(label='Адрес электронной почты',
                              error_messages={
-                                 'invalid': "Не правильный формат адреса",
+                                 'required': "Обязательное поле",
+                                 'invalid': "Неправильный формат адреса",
                                  'unique': "Данный адрес занят"
                              })
     password = forms.CharField(label='Пароль',

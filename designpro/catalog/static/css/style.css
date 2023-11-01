@@ -72,6 +72,22 @@ main{
     margin: 0;
 }
 
+.errorlist{
+    padding: 0 10px;
+    list-style-type: none;
+    background-color: #c73232;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-bottom: 0;
+    text-align: center;
+    text-decoration: none;
+}
+
+.errorlist>li {
+    list-style-type: none;
+}
+
 .for-form>form{
     padding: 40px;
     background-color: #1f2e23;
