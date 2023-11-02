@@ -62,3 +62,16 @@ class RegisterUserForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class ApplicationForm(forms.ModelForm):
+    def clean(self):
+        status = self.cleaned_data.get('status')
+        img = self.cleaned_data.get('img')
+        comment = self.cleaned_data.get('comment')
+        if self.instance.status != 'new':
+            raise forms.ValidationError({'status': "Только у новых заказов можно поменять статус"})
+        elif status == 'in work' and not comment:
+            raise forms.ValidationError({'comment': "Добавьте комментарий "})
+        elif status == 'done' and not img:
+            raise forms.ValidationError({'img': "Добавьте созданный дизайн"})
