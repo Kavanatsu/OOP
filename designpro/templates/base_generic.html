@@ -31,6 +31,23 @@
                     {% endblock %}
                 </div>
             </div>
+             {% block pagination %}
+                {% if is_paginated %}
+                    <div class="pagination justify-content-center m-auto">
+                        <span class="page-links d-flex justify-content-center">
+                            {% if page_obj.has_previous %}
+                                <a class="pagination p" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+                            {% endif %}
+                            <span class="page-current p">
+                                Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+                            </span>
+                            {% if page_obj.has_next %}
+                                <a class="pagination p" href="{{ request.path }}?page={{ page_obj.next_page_number }}"> Следующая</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                {% endif %}
+            {% endblock %}
         </div>
         <footer class="footer_part d-flex justify-content-center align-items-center ">
                 <p class="text-white-50">Выполнила: Чикулаева А.А.</p>

@@ -7,16 +7,27 @@
         <ul>
         {% for application in application_list %}
             <div class=" box-shadow content-window">
-                <div class="d-flex ">
-                    <div>
-                        <img src="{{application.image.url}}">
+                <div class="d-flex my-3 py-5 justify-content-center ">
+                    <div class="image">
+                        <img src="{{application.img.url}}">
                     </div>
-                    <div>
-                        <div class="d-flex justify-content-between">
-                            <p class="p-2"> {{application.name}} ({{application.categories}})</p>
-                            <p class="p-2"> {{application.date}} - ({{application.status}})</p>
+                    <div class="card">
+                        <div class="d-flex justify-content-start description flex-column">
+                            <p class="pt-3 px-4 name"> {{application.name}}</p>
+                            <p class="pt-1 px-4">Категория: {{application.categories}}</p>
                         </div>
-                        <p class="p-2"> {{application.description}}</p>
+                        <p class="p-4">{{application.description}}</p>
+                        <div class="d-flex justify-content-start">
+                            <p class="p-4 name">Комментарий дизайнера: </p>
+                            <p class="py-4 px-1">{{application.comment}}</p>
+                        </div>
+
+
+                        <div class="d-flex justify-content-center" >
+                            <p class="p-4"> {{application.date}}</p>
+                                <p class="p-4"> - </p>
+                                <p class="p-4 status"> {{application.status}} </p>
+                        </div>
                     </div>
                 </div>
             </div>
