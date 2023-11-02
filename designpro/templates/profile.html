@@ -7,27 +7,31 @@
         <p class="sl"><a href="{% url 'profile' %}?status=in work"> В работе</a>  </p>
         <p class="sl"><a href="{% url 'profile' %}?status=done"> Выполненые </a></p>
     </div>
-    <div class="content-window ">
+    <div class="d-flex justify-content-center content-window ">
         <p class="sl"><a href="{% url 'createapp' %}"> + Создать новое объявление</a></p>
     </div>
     {% if application_list %}
         <ul>
         {% for application in application_list %}
-            <div class=" box-shadow content-window">
-                <div class="d-flex ">
-                    <div>
+            <div class="box-shadow content-window">
+                <div class="d-flex my-3 py-5 justify-content-center">
+                    <div class="image">
                         <img src="{{application.image.url}}">
                     </div>
-                    <div>
-                        <div class="d-flex justify-content-between">
-                            <p class="p-2"> {{application.name}} ({{application.categories}})</p>
-                            <p class="p-2"> {{application.date}} - ({{application.status}})
-                                {% if application.status == 'new' %}
-                                    <a href="{% url 'delete_application' application.pk %}">Удалить заказ</a>
-                                {% endif %}
-                            </p>
+                    <div class="card">
+                        <div class="d-flex justify-content-start description flex-column">
+                            <p class="pt-3 px-4 name"> {{application.name}}</p>
+                            <p class="pt-1 px-4">Категория: {{application.categories}}</p>
                         </div>
-                        <p class="p-2"> {{application.description}}</p>
+                        <p class="p-4">{{application.description}}</p>
+                        <div class="d-flex justify-content-center" >
+                            <p class="p-4"> {{application.date}}</p>
+                                <p class="p-4"> - </p>
+                                <p class="p-4 status"> {{application.status}} </p>
+                                    {% if application.status == 'new' %}
+                                        <p class="sl"><a href="{% url 'delete_application' application.pk %}">Удалить заказ</a></p>
+                                    {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>

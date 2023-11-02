@@ -1,7 +1,7 @@
 from django.core.validators import RegexValidator
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import User, Application
+from .models import User
 
 
 class RegisterUserForm(forms.ModelForm):
