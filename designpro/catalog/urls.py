@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
 from .views import ApplicationListView, delete_application, ApplicationAllListView
-
 urlpatterns = [
     path('', ApplicationAllListView.as_view(), name='index'),
     path('register/', views.RegisterView.as_view(), name='register'),

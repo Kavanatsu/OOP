@@ -16,7 +16,14 @@
             <div class="box-shadow content-window">
                 <div class="d-flex my-3 py-5 justify-content-center">
                     <div class="image">
-                        <img src="{{application.image.url}}">
+                        <div class="img">
+                            <p class="text">Изображение, загруженное пользователем:</p>
+                            <img src="{{application.image.url}}">
+                            {% if application.img %}
+                                <p class="text">Изображение после редакции:</p>
+                                <img src="{{application.img.url}}">
+                            {% endif %}
+                        </div>
                     </div>
                     <div class="card">
                         <div class="d-flex justify-content-start description flex-column">
@@ -24,12 +31,27 @@
                             <p class="pt-1 px-4">Категория: {{application.categories}}</p>
                         </div>
                         <p class="p-4">{{application.description}}</p>
+                        {% if application.comment %}
+                             <div class="d-flex justify-content-start">
+                                <p class="p-4 name">Комментарий дизайнера: </p>
+                                <p class="py-4 px-1">{{application.comment}}</p>
+                            </div>
+                        {% endif %}
                         <div class="d-flex justify-content-center" >
                             <p class="p-4"> {{application.date}}</p>
                                 <p class="p-4"> - </p>
                                 <p class="p-4 status"> {{application.status}} </p>
                                     {% if application.status == 'new' %}
-                                        <p class="sl"><a href="{% url 'delete_application' application.pk %}">Удалить заказ</a></p>
+                                        <p class="sl"><a href="#win1" >Удалить заказ</a></p>
+                                        <a href="#x" class="overlay" id="win1"></a>
+                                        <div class="popup">
+                                            <p class="zgl">Вы действительно хотите удалить заказ?</p>
+                                            <div class="d-flex justify-content-center" >
+                                                <p class="sl"><a href="{% url 'delete_application' application.pk %}">Удалить заказ</a></p>
+                                                <p class="sl close"><a href="{% url 'profile' %}">Нет</a></p>
+                                            </div>
+                                        </div>
+
                                     {% endif %}
                         </div>
                     </div>
